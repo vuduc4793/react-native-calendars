@@ -48,10 +48,11 @@ class Day extends Component {
       // Filter out dots so that we we process only those items which have key and color property
       const validDots = marking.dots.filter(d => (d && d.color));
       return validDots.map((dot, index) => {
-        return (
-          <View key={dot.key ? dot.key : index} style={[baseDotStyle,
-            {backgroundColor: marking.selected && dot.selectedDotColor ? dot.selectedDotColor : dot.color}]}/>
-        );
+        if (index <= 2){
+          return (
+            <View key={dot.key ? dot.key : index} style={[baseDotStyle,
+              {backgroundColor: marking.selected && dot.selectedDotColor ? dot.selectedDotColor : dot.color}]}/>
+          );}
       });
     }
     return;
