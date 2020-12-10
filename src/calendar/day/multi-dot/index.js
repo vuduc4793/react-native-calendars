@@ -31,11 +31,11 @@ class Day extends Component {
   }
 
   onDayPress() {
-    this.props.onPress(this.props.marking);
+    this.props.onPress(this.props.marking, this.props.date);
   }
 
   onDayLongPress() {
-    this.props.onLongPress(this.props.marking);
+    this.props.onLongPress(this.props.marking, this.props.date);
   }
 
   shouldComponentUpdate(nextProps) {

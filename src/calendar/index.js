@@ -116,9 +116,9 @@ class Calendar extends Component {
     );
   };
 
-  _handleDayInteraction(date, interaction) {
+  _handleDayInteraction(date, dateString, interaction) {
     const {disableMonthChange} = this.props;
-    const day = parseDate(date);
+    const day = parseDate(dateString);
     const minDate = parseDate(this.props.minDate);
     const maxDate = parseDate(this.props.maxDate);
 
@@ -129,17 +129,17 @@ class Calendar extends Component {
         this.updateMonth(day);
       }
       if (interaction) {
-        interaction(date);
+        interaction(date, xdateToData(day));
       }
     }
   }
 
-  pressDay = date => {
-    this._handleDayInteraction(date, this.props.onDayPress);
+  pressDay = (date, dateString) => {
+    this._handleDayInteraction(date, dateString, this.props.onDayPress);
   };
 
-  longPressDay = date => {
-    this._handleDayInteraction(date, this.props.onDayLongPress);
+  longPressDay = (date, dateString) => {
+    this._handleDayInteraction(date, dateString, this.props.onDayLongPress);
   };
 
   addMonth = count => {
