@@ -129,7 +129,7 @@ class Calendar extends Component {
         this.updateMonth(day);
       }
       if (interaction) {
-        interaction(xdateToData(day));
+        interaction(date);
       }
     }
   }
