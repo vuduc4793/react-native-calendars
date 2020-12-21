@@ -206,7 +206,11 @@ class WeekCalendar extends Component {
               <Text
                 allowFontScaling={false}
                 key={idx}
-                style={this.props.theme['stylesheet.calendar.header'].dayHeader || this.style.dayHeader}
+                style={
+                  (idx === 6
+                    ? this.props.theme['stylesheet.calendar.header'].weekendText
+                    : this.props.theme['stylesheet.calendar.header'].dayHeader) || this.style.dayHeader
+                }
                 numberOfLines={1}
                 accessibilityLabel={''}
                 // accessible={false} // not working
