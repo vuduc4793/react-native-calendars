@@ -35,7 +35,8 @@ class Week extends Component {
       const current = parseDate(date);
       const daysArray = [current];
       let dayOfTheWeek = current.getDay() - this.props.firstDay;
-      if (dayOfTheWeek < 0) { // to handle firstDay > 0
+      if (dayOfTheWeek < 0) {
+        // to handle firstDay > 0
         dayOfTheWeek = 7 + dayOfTheWeek;
       }
 
@@ -61,7 +62,7 @@ class Week extends Component {
 
   getDayComponent() {
     const {dayComponent, markingType} = this.props;
-    
+
     if (dayComponent) {
       return dayComponent;
     }
@@ -108,7 +109,8 @@ class Week extends Component {
       state = 'disabled';
     } else if ((minDate && !dateutils.isGTE(day, minDate)) || (maxDate && !dateutils.isLTE(day, maxDate))) {
       state = 'disabled';
-    } else if (!dateutils.sameMonth(day, parseDate(current))) { // for extra days
+    } else if (!dateutils.sameMonth(day, parseDate(current))) {
+      // for extra days
       state = 'disabled';
     } else if (dateutils.sameDate(day, XDate())) {
       state = 'today';
@@ -117,7 +119,7 @@ class Week extends Component {
     // hide extra days
     if (current && this.props.hideExtraDays) {
       if (!dateutils.sameMonth(day, parseDate(current))) {
-        return (<View key={id} style={this.style.emptyDayContainer}/>);
+        return <View key={id} style={this.style.emptyDayContainer} />;
       }
     }
 
@@ -136,6 +138,7 @@ class Week extends Component {
           onPress={this.props.onDayPress}
           onLongPress={this.props.onDayPress}
           disableAllTouchEventsForDisabledDays={this.props.disableAllTouchEventsForDisabledDays}
+          day={day.getDay()}
         >
           {dayDate}
         </DayComp>
