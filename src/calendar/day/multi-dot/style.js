@@ -3,22 +3,28 @@ import * as defaultStyle from '../../../style';
 
 const STYLESHEET_ID = 'stylesheet.day.multiDot';
 
-export default function styleConstructor(theme={}) {
+export default function styleConstructor(theme = {}) {
   const appStyle = {...defaultStyle, ...theme};
   return StyleSheet.create({
     base: {
       width: 32,
       height: 32,
       alignItems: 'center',
-      justifyContent: "center",
+      justifyContent: 'center'
     },
     text: {
       // marginTop: 4,
       fontSize: appStyle.textDayFontSize,
       fontFamily: appStyle.textDayFontFamily,
       fontWeight: appStyle.textDayFontWeight,
-      color: appStyle.dayTextColor,
-      backgroundColor: 'rgba(255, 255, 255, 0)'
+      color: appStyle.dayTextColor
+    },
+    weekendTextStyle: {
+      // marginTop: 4,
+      fontSize: appStyle.textDayFontSize,
+      fontFamily: appStyle.textDayFontFamily,
+      fontWeight: appStyle.textDayFontWeight,
+      color: appStyle.dayTextColor
     },
     alignedText: {
       marginTop: Platform.OS === 'android' ? 4 : 6
@@ -40,7 +46,8 @@ export default function styleConstructor(theme={}) {
       color: appStyle.textDisabledColor
     },
     dotContainer: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      height: 6
     },
     dot: {
       width: 6,
