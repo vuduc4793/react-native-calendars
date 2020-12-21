@@ -108,11 +108,17 @@ class CalendarHeader extends Component {
 
     return weekDaysNames.map((day, idx) => {
       const dayStyle = [this.style.dayHeader];
-
+      const weekendText = [this.style.weekendText];
       if (_.includes(disabledDaysIndexes, idx)) {
         dayStyle.push(this.style.disabledDayHeader);
       }
-
+      if (idx === 6) {
+        return (
+          <Text allowFontScaling={false} key={idx} style={weekendText} numberOfLines={1} accessibilityLabel={''}>
+            {day}
+          </Text>
+        );
+      }
       return (
         <Text allowFontScaling={false} key={idx} style={dayStyle} numberOfLines={1} accessibilityLabel={''}>
           {day}

@@ -58,6 +58,16 @@ export default function (theme = {}) {
     disabledDayHeader: {
       color: appStyle.textSectionTitleDisabledColor
     },
+    weekendText: {
+      color: '#000',
+      marginTop: 2,
+      marginBottom: 7,
+      width: 32,
+      textAlign: 'center',
+      fontSize: appStyle.textDayHeaderFontSize,
+      fontFamily: appStyle.textDayHeaderFontFamily,
+      fontWeight: appStyle.textDayHeaderFontWeight
+    },
     ...(theme[STYLESHEET_ID] || {})
   });
 }
