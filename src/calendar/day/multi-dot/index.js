@@ -83,7 +83,7 @@ class Day extends Component {
       textStyle.push(this.style.todayText);
     }
     return (
-      <View>
+      <>
         <TouchableOpacity
           testID={this.props.testID}
           style={containerStyle}
@@ -98,7 +98,7 @@ class Day extends Component {
           </Text>
         </TouchableOpacity>
         <View style={this.style.dotContainer}>{dot}</View>
-      </View>
+      </>
     );
   }
 }
