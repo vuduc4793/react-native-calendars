@@ -306,6 +306,7 @@ class Calendar extends Component {
           accessibilityLabel={accessibilityLabel}
           theme={theme}
           disableAllTouchEventsForDisabledDays={disableAllTouchEventsForDisabledDays}
+          day={day.getDay()}
         >
           {date}
         </DayComp>
