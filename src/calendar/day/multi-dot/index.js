@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import {shouldUpdate} from '../../../component-updater';
 import styleConstructor from './style';
+import { isObject } from 'lodash';
 
 class Day extends Component {
   static displayName = 'IGNORE';
@@ -59,6 +60,23 @@ class Day extends Component {
           );
         }
       });
+    } else if (marking.dots && isObject(marking.dots)) {
+      const {dots} = marking
+      let count = 0
+      let viewDots = []
+      for (const key in dots ) {
+        if (count <= 2) {viewDots.push(
+          <View
+              key={key}
+              style={[
+                baseDotStyle,
+                {backgroundColor: marking.selected && dots[key].selectedDotColor ? dots[key].selectedDotColor : dots[key].color}
+              ]}
+            />
+        )
+        count += 1}
+      }
+      return viewDots
     }
     return;
   }
