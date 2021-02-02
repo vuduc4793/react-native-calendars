@@ -75,7 +75,6 @@ export default function styleConstructor(theme = {}) {
       justifyContent: 'space-between'
     },
     weekday: {
-      width: 32,
       textAlign: 'center',
       fontSize: appStyle.textDayHeaderFontSize,
       fontFamily: appStyle.textDayHeaderFontFamily,
@@ -83,7 +82,6 @@ export default function styleConstructor(theme = {}) {
       color: appStyle.textSectionTitleColor
     },
     weekendText: {
-      width: 32,
       textAlign: 'center',
       fontSize: appStyle.textDayHeaderFontSize,
       fontFamily: appStyle.textDayHeaderFontFamily,
@@ -156,6 +154,11 @@ export default function styleConstructor(theme = {}) {
       tintColor: appStyle.todayButtonTextColor,
       marginLeft: appStyle.todayButtonPosition === 'right' ? 7 : undefined,
       marginRight: appStyle.todayButtonPosition === 'right' ? undefined : 7
+    },
+    dayHeaderContainer: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     ...(theme[STYLESHEET_ID] || {})
   });

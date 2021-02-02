@@ -68,6 +68,11 @@ export default function (theme = {}) {
       fontFamily: appStyle.textDayHeaderFontFamily,
       fontWeight: appStyle.textDayHeaderFontWeight
     },
+    dayHeaderContainer: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
     ...(theme[STYLESHEET_ID] || {})
   });
 }

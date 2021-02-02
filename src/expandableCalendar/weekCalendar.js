@@ -203,21 +203,22 @@ class WeekCalendar extends Component {
           <View style={[this.style.week, {marginTop: 12, marginBottom: -2}]}>
             {/* {this.props.weekNumbers && <Text allowFontScaling={false} style={this.style.dayHeader}></Text>} */}
             {weekDaysNames.map((day, idx) => (
-              <Text
-                allowFontScaling={false}
-                key={idx}
-                style={
-                  (idx === 6
-                    ? this.props.theme['stylesheet.calendar.header'].weekendText
-                    : this.props.theme['stylesheet.calendar.header'].dayHeader) || this.style.dayHeader
-                }
-                numberOfLines={1}
-                accessibilityLabel={''}
-                // accessible={false} // not working
-                // importantForAccessibility='no'
-              >
-                {day}
-              </Text>
+              <View key={idx} style={this.style.dayHeaderContainer}>
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    (idx === 6
+                      ? this.props.theme['stylesheet.calendar.header'].weekendText
+                      : this.props.theme['stylesheet.calendar.header'].dayHeader) || this.style.dayHeader
+                  }
+                  numberOfLines={1}
+                  accessibilityLabel={''}
+                  // accessible={false} // not working
+                  // importantForAccessibility='no'
+                >
+                  {day}
+                </Text>
+              </View>
             ))}
           </View>
         )}

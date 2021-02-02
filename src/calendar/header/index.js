@@ -113,9 +113,11 @@ class CalendarHeader extends Component {
       }
 
       return (
-        <Text allowFontScaling={false} key={idx} style={dayStyle} numberOfLines={1} accessibilityLabel={''}>
-          {day}
-        </Text>
+        <View key={idx} style={this.style.dayHeaderContainer}>
+          <Text allowFontScaling={false} style={dayStyle} numberOfLines={1} accessibilityLabel={''}>
+            {day}
+          </Text>
+        </View>
       );
     });
   };
