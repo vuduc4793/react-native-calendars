@@ -78,7 +78,8 @@ class Calendar extends Component {
     /** Style passed to the header */
     headerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     /** Allow rendering of a totally custom header */
-    customHeader: PropTypes.any
+    customHeader: PropTypes.any,
+    disabledDaysList: PropTypes.arrayOf(PropTypes.number)
   };
 
   static defaultProps = {
@@ -304,6 +305,7 @@ class Calendar extends Component {
           date={dateAsObject}
           marking={this.getDateMarking(day)}
           accessibilityLabel={accessibilityLabel}
+          disabledDaysList={this.props.disabledDaysList}
           theme={theme}
           disableAllTouchEventsForDisabledDays={disableAllTouchEventsForDisabledDays}
           day={day.getDay()}
