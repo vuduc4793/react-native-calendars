@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import PropTypes from 'prop-types';
-
+import moment from 'moment';
 import styleConstructor from './style';
 import {shouldUpdate} from '../../../component-updater';
 
-
 class Day extends Component {
   static displayName = 'IGNORE';
-  
+
   static propTypes = {
     // TODO: disabled props should be removed
     state: PropTypes.oneOf(['selected', 'disabled', 'today', '']),
@@ -17,7 +16,9 @@ class Day extends Component {
     marking: PropTypes.any,
     onPress: PropTypes.func,
     onLongPress: PropTypes.func,
-    date: PropTypes.object
+    date: PropTypes.object,
+    disabledDaysList: PropTypes.arrayOf(PropTypes.number),
+    disabledType: PropTypes.string
   };
 
   constructor(props) {
@@ -43,20 +44,22 @@ class Day extends Component {
   render() {
     let containerStyle = [this.style.base];
     let textStyle = [this.style.text];
-    
+
     let marking = this.props.marking || {};
     if (marking && marking.constructor === Array && marking.length) {
       marking = {
         marking: true
       };
     }
-
+    const disableTouchEvent =
+      marking.disableTouchEvent ||
+      this.props.disabledDaysList.toString().includes(moment(this.props.date.timestamp).isoWeekday() - 1);
     const isDisabled = typeof marking.disabled !== 'undefined' ? marking.disabled : this.props.state === 'disabled';
-    
+
     if (marking.selected) {
       containerStyle.push(this.style.selected);
       textStyle.push(this.style.selectedText);
-    } else if (isDisabled) {
+    } else if (isDisabled || disableTouchEvent) {
       textStyle.push(this.style.disabledText);
     } else if (this.props.state === 'today') {
       containerStyle.push(this.style.today);
@@ -76,6 +79,8 @@ class Day extends Component {
       }
     }
 
+    console.log(moment(this.props.date.timestamp).isoWeekday() - 1);
+
     return (
       <TouchableOpacity
         testID={this.props.testID}
@@ -83,11 +88,13 @@ class Day extends Component {
         onPress={this.onDayPress}
         onLongPress={this.onDayLongPress}
         activeOpacity={marking.activeOpacity}
-        disabled={marking.disableTouchEvent}
+        disabled={disableTouchEvent}
         accessibilityRole={isDisabled ? undefined : 'button'}
         accessibilityLabel={this.props.accessibilityLabel}
       >
-        <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
+        <Text allowFontScaling={false} style={textStyle}>
+          {String(this.props.children)}
+        </Text>
       </TouchableOpacity>
     );
   }
