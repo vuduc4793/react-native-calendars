@@ -79,8 +79,6 @@ class Day extends Component {
       }
     }
 
-    console.log(moment(this.props.date.timestamp).isoWeekday() - 1);
-
     return (
       <TouchableOpacity
         testID={this.props.testID}
