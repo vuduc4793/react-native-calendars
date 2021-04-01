@@ -169,7 +169,7 @@ class WeekCalendar extends Component {
         key={item}
         current={item}
         style={[{width: calendarWidth || this.containerWidth}, style]}
-        markedDates={this.getMarkedDates()}
+        markedDates={this.props.autoMarkedDates ? this.getMarkedDates() : this.props.markedDates}
         onDayPress={onDayPress || this.onDayPress}
       />
     );
