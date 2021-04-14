@@ -90,6 +90,7 @@ class CalendarListItem extends Component {
           disableMonthChange
           onPressArrowLeft={horizontal ? this.onPressArrowLeft : onPressArrowLeft}
           onPressArrowRight={horizontal ? this.onPressArrowRight : onPressArrowRight}
+          typeDate={this.props.typeDate}
         />
       );
     } else {
