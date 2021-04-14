@@ -256,6 +256,7 @@ class CalendarList extends Component {
         style={calendarStyle}
         calendarWidth={horizontal ? calendarWidth : undefined}
         scrollToMonth={this.scrollToMonth}
+        typeDate={this.props.typeDate}
       />
     );
   };
